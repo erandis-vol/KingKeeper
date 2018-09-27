@@ -1,2 +1,2 @@
 # KingKeeper
-Save editor for Pathfinder: Kingmaker by Owlcat Games.
+Experimental save editor for Pathfinder: Kingmaker by Owlcat Games.
