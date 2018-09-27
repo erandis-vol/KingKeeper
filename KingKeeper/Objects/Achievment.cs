@@ -6,7 +6,13 @@ namespace KingKeeper.Objects
 {
     public class Achievment : BaseObject
     {
-        // TODO
+        public Guid Data { get; set; }
+
+        public bool IsUnlocked { get; set; }
+
+        public bool NeedCommit { get; set; }
+
+        public int Counter { get; set; }
     }
 
     public class AchievmentsData : BaseObject
