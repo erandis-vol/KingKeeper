@@ -57,9 +57,34 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objects\Achievment.cs" />
+    <Compile Include="Objects\AreaAmbienceData.cs" />
+    <Compile Include="Objects\BaseObject.cs" />
+    <Compile Include="Objects\Camera.cs" />
+    <Compile Include="Objects\Camping.cs" />
     <Compile Include="Objects\CharacterReference.cs" />
+    <Compile Include="Objects\CrossSceneState.cs" />
+    <Compile Include="Objects\Dialog.cs" />
+    <Compile Include="Objects\Difficulty.cs" />
+    <Compile Include="Objects\Encumbrance.cs" />
+    <Compile Include="Objects\Formation.cs" />
+    <Compile Include="Objects\GlobalMap.cs" />
+    <Compile Include="Objects\InspectUnitsManager.cs" />
+    <Compile Include="Objects\Kingdom.cs" />
     <Compile Include="Objects\Party.cs" />
     <Compile Include="Objects\Player.cs" />
+    <Compile Include="Objects\Flag.cs" />
+    <Compile Include="Objects\QuestBook.cs" />
+    <Compile Include="Objects\REManager.cs" />
+    <Compile Include="Objects\SharedStash.cs" />
+    <Compile Include="Objects\SharedVendorTables.cs" />
+    <Compile Include="Objects\SkillCheck.cs" />
+    <Compile Include="Objects\Story.cs" />
+    <Compile Include="Objects\Time.cs" />
+    <Compile Include="Objects\UISettings.cs" />
+    <Compile Include="Objects\UpgradeAction.cs" />
+    <Compile Include="Objects\VisitedArea.cs" />
+    <Compile Include="Objects\Weather.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\ZipFileExtensions.cs" />

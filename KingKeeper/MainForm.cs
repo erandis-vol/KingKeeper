@@ -70,11 +70,11 @@ namespace KingKeeper
                 // Save Games are ZIP archives containing JSON data
                 using (var archive = ZipFile.OpenRead(save.FullName))
                 {
-                    var player = Extract<Player>(archive, "player.json");
-                    if (player == null)
-                        throw new FileNotFoundException("Could not find \"player.json\".");
+                    //var player = Extract<Player>(archive, "player.json");
+                    //if (player == null)
+                    //    throw new FileNotFoundException("Could not find \"player.json\".");
 
-
+                    richTextBox1.Text = ExtractString(archive, "player.json");
                 }
 
             }
@@ -90,6 +90,15 @@ namespace KingKeeper
                 return default(T);
 
             return JsonConvert.DeserializeObject<T>(entry.ExtractToString());
+        }
+
+        string ExtractString(ZipArchive archive, string entryName)
+        {
+            var entry = archive.GetEntry(entryName);
+            if (entry == null)
+                return null;
+
+            return entry.ExtractToString();
         }
     }
 }
