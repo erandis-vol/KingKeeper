@@ -11,7 +11,7 @@ namespace KingKeeper.Objects
         public int Value { get; set; }
     }
 
-    public class UnlockableFlags : BaseObject
+    public class UnlockableFlags
     {
         [JsonProperty("m_UnlockedFlags")]
         public IList<Flag> UnlockedFlags { get; set; }

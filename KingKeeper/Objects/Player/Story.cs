@@ -9,7 +9,7 @@ namespace KingKeeper.Objects
         // TODO
     }
 
-    public class CompanionStories : BaseObject
+    public class CompanionStories
     {
         [JsonProperty("m_Stories")]
         public IList<Story> Stories { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KingKeeper.Objects
 {
-    public class QuestBook : BaseObject
+    public class QuestBook
     {
         // TODO
     }

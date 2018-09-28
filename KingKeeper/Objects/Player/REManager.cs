@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KingKeeper.Objects
 {
-    public class REManager : BaseObject
+    public class REManager
     {
     }
 }

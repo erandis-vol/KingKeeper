@@ -8,9 +8,6 @@ namespace KingKeeper.Objects
     {
         private JObject obj;
 
-        // Temporary
-        public BaseObject() : this(new JObject()) { }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseObject"/> class.
         /// </summary>
@@ -36,6 +33,16 @@ namespace KingKeeper.Objects
         protected JObject GetObject(string propertyName)
         {
             return (JObject)obj[propertyName];
+        }
+
+        /// <summary>
+        /// Returns the specified property as an array.
+        /// </summary>
+        /// <param name="propertyName"></param>
+        /// <returns></returns>
+        protected JArray GetArray(string propertyName)
+        {
+            return (JArray)obj[propertyName];
         }
 
         /// <summary>
@@ -155,6 +162,12 @@ namespace KingKeeper.Objects
         {
             return obj.ToString(formatting, converters);
         }
+
+        /// <summary>
+        /// Returns the underlying JSON object.
+        /// </summary>
+        /// <returns></returns>
+        public JObject ToJObject() => obj;
 
         /// <summary>
         /// <c>$id</c> Gets or sets object's unique identifier.

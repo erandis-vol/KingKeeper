@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace KingKeeper.Objects
 {
-    public class Dialog : BaseObject
+    public class Dialog
     {
         public IList<Guid> SelectedAnswers { get; set; }
 

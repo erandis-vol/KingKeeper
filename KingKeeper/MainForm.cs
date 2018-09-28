@@ -85,9 +85,7 @@ namespace KingKeeper
                     Console.WriteLine(player.MainCharacter);
                     player.MainCharacter.UniqueID = Guid.NewGuid();
 
-                    Console.WriteLine(player.MainCharacter);
-
-                    Console.WriteLine(player.ToString(Formatting.None));
+                    
                 }
             }
         }
