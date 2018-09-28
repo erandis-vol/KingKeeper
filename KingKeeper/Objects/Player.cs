@@ -28,13 +28,13 @@ namespace KingKeeper.Objects
             set => SetValue("RealTime", value);
         }
 
-        public CrossSceneState CrossSceneState { get; set; }
+        //public CrossSceneState CrossSceneState { get; set; }
 
-        [JsonProperty("m_QuestBook")]
-        public QuestBook QuestBook { get; set; }
+        //[JsonProperty("m_QuestBook")]
+        //public QuestBook QuestBook { get; set; }
 
-        [JsonProperty("m_UnlockableFlags")]
-        public UnlockableFlags UnlockableFlags { get; set; }
+        //[JsonProperty("m_UnlockableFlags")]
+        //public UnlockableFlags UnlockableFlags { get; set; }
 
         private Dialog dialog = null;
 
@@ -46,18 +46,18 @@ namespace KingKeeper.Objects
             get => dialog ?? (dialog = new Dialog(GetObject("m_Dialog")));
         }
 
-        [JsonProperty("m_GlobalMap")]
-        public GlobalMap GlobalMap { get; set; }
+        //[JsonProperty("m_GlobalMap")]
+        //public GlobalMap GlobalMap { get; set; }
 
-        [JsonProperty("m_Camping")]
-        public Camping Camping { get; set; }
+        //[JsonProperty("m_Camping")]
+        //public Camping Camping { get; set; }
 
-        public CompanionStories CompanionStories { get; set; }
+        //public CompanionStories CompanionStories { get; set; }
 
-        [JsonProperty("m_AreaAmbienceData")]
-        public IList<AreaAmbienceData> AreaAmbienceData { get; set; }
+        //[JsonProperty("m_AreaAmbienceData")]
+        //public IList<AreaAmbienceData> AreaAmbienceData { get; set; }
 
-        public IList<VisitedArea> VisitedAreasData { get; set; }
+        //public IList<VisitedArea> VisitedAreasData { get; set; }
 
         /// <summary>
         /// Gets or sets the current area.
@@ -78,7 +78,7 @@ namespace KingKeeper.Objects
             get => camera ?? (camera = new Camera(GetObject("m_CameraPos")));
         }
 
-        public IList<CharacterReference> ExCompanions { get; set; }
+        //public IList<CharacterReference> ExCompanions { get; set; }
 
         /// <summary>
         /// Gets or sets the current formation index.
@@ -99,11 +99,11 @@ namespace KingKeeper.Objects
             get => mainCharacter ?? (mainCharacter = new CharacterReference(GetObject("m_MainCharacter")));
         }
 
-        public UISettings UISettings { get; set; }
+        //public UISettings UISettings { get; set; }
 
-        public IList<Formation> CustomFormations { get; set; }
+        //public IList<Formation> CustomFormations { get; set; }
 
-        public Difficulty Difficulty { get; set; }
+        //public Difficulty Difficulty { get; set; }
 
         public int Chapter
         {
@@ -111,13 +111,13 @@ namespace KingKeeper.Objects
             set => SetValue("Chapter", value);
         }
 
-        public Kingdom Kingdom { get; set; }
+        //public Kingdom Kingdom { get; set; }
 
-        public SharedStash SharedStash { get; set; }
+        //public SharedStash SharedStash { get; set; }
 
-        public REManager REManager { get; set; }
+        //public REManager REManager { get; set; }
 
-        public SharedVendorTables SharedVendorTables { get; set; }
+        //public SharedVendorTables SharedVendorTables { get; set; }
 
         private AchievementsData achievements = null;
 
@@ -129,17 +129,17 @@ namespace KingKeeper.Objects
             get => achievements ?? (achievements = new AchievementsData(GetObject("Achievements")));
         }
 
-        public InspectUnitsManager InspectUnitsManager { get; set; }
+        //public InspectUnitsManager InspectUnitsManager { get; set; }
 
-        public IList<UpgradeAction> UpgradeActions { get; set; }
+        //public IList<UpgradeAction> UpgradeActions { get; set; }
 
-        public Weather Weather { get; set; }
+        //public Weather Weather { get; set; }
 
-        public IList<CharacterReference> PartyCharacters { get; set; }
+        //public IList<CharacterReference> PartyCharacters { get; set; }
 
-        public IList<CharacterReference> DetachedPartyCharacters { get; set; }
+        //public IList<CharacterReference> DetachedPartyCharacters { get; set; }
 
-        public IList<CharacterReference> RemoteCompanions { get; set; }
+        //public IList<CharacterReference> RemoteCompanions { get; set; }
 
         /// <summary>
         /// Gets or sets the player's gold.
@@ -150,9 +150,16 @@ namespace KingKeeper.Objects
             set => SetValue("Money", value);
         }
 
-        public Guid SelectedFormation { get; set; }
+        /// <summary>
+        /// Gets or sets the selected formation.
+        /// </summary>
+        public Guid SelectedFormation
+        {
+            get => GetValue<Guid>("SelectedFormat");
+            set => SetValue("SelectedFormat", value);
+        }
 
-        public CharacterReference Stalker { get; set; } // TODO: verify
+        //public CharacterReference Stalker { get; set; } // TODO: verify
 
         /// <summary>
         /// Gets or sets the player's encumbrance level.
