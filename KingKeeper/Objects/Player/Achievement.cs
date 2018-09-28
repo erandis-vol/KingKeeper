@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace KingKeeper.Objects
 {
-    public class Achievment : BaseObject
+    public class Achievement : BaseObject
     {
         public Guid Data { get; set; }
 
@@ -18,6 +18,6 @@ namespace KingKeeper.Objects
     public class AchievmentsData : BaseObject
     {
         [JsonProperty("m_Achievements")]
-        public IList<Achievment> Achievments { get; set; }
+        public IList<Achievement> Achievments { get; set; }
     }
 }

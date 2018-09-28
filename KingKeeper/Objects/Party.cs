@@ -7,8 +7,16 @@ using System.Threading.Tasks;
 
 namespace KingKeeper.Objects
 {
-    public class Party
+    public class Party : BaseObject
     {
-        // TODO
+        public Party(string json)
+            : base(json)
+        { }
+
+        public bool BitexSave { get; set; }
+
+        public string SceneName { get; set; } // = "<cross-scene>"
+
+        public bool HasEntityData { get; set; }
     }
 }

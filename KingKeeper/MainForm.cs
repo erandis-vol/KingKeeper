@@ -1,6 +1,7 @@
 ﻿using KingKeeper.Extensions;
 using KingKeeper.Objects;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -59,10 +60,18 @@ namespace KingKeeper
             return false;
         }
 
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // just testing things
+            var test1 = new JValue(12);
+            Console.WriteLine(test1);
+
+            var test2 = JToken.FromObject(23);
+            Console.WriteLine(test2);
+        }
+
         private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
-
             if (listBox1.SelectedIndex >= 0 && listBox1.SelectedIndex < listBox1.Items.Count)
             {
                 var save = saves[listBox1.SelectedIndex];              
@@ -70,29 +79,20 @@ namespace KingKeeper
                 // Save Games are ZIP archives containing JSON data
                 using (var archive = ZipFile.OpenRead(save.FullName))
                 {
-                    //var player = Extract<Player>(archive, "player.json");
-                    //if (player == null)
-                    //    throw new FileNotFoundException("Could not find \"player.json\".");
+                    var header = new Header(Extract(archive, "header.json"));
+                    var player = new Player(Extract(archive, "player.json"));
 
-                    richTextBox1.Text = ExtractString(archive, "player.json");
+                    Console.WriteLine(player.MainCharacter);
+                    player.MainCharacter.UniqueID = Guid.NewGuid();
+
+                    Console.WriteLine(player.MainCharacter);
+
+                    Console.WriteLine(player.ToString(Formatting.None));
                 }
-
             }
-
-
-
         }
 
-        T Extract<T>(ZipArchive archive, string entryName)
-        {
-            var entry = archive.GetEntry(entryName);
-            if (entry == null)
-                return default(T);
-
-            return JsonConvert.DeserializeObject<T>(entry.ExtractToString());
-        }
-
-        string ExtractString(ZipArchive archive, string entryName)
+        string Extract(ZipArchive archive, string entryName)
         {
             var entry = archive.GetEntry(entryName);
             if (entry == null)
@@ -100,5 +100,7 @@ namespace KingKeeper
 
             return entry.ExtractToString();
         }
+
+
     }
 }

@@ -6,9 +6,27 @@ namespace KingKeeper.Objects
 {
     public class Player : BaseObject
     {
-        public Time GameTime { get; set; }
+        public Player(string json)
+            : base(json)
+        { }
 
-        public Time RealTime { get; set; }
+        /// <summary>
+        /// Gets or sets the game time.
+        /// </summary>
+        public Time GameTime
+        {
+            get => GetValue<Time>("GameTime");
+            set => SetValue("GameTime", value);
+        }
+
+        /// <summary>
+        /// Gets or sets the real time.
+        /// </summary>
+        public Time RealTime
+        {
+            get => GetValue<Time>("RealTime");
+            set => SetValue("RealTime", value);
+        }
 
         public CrossSceneState CrossSceneState { get; set; }
 
@@ -34,18 +52,45 @@ namespace KingKeeper.Objects
 
         public IList<VisitedArea> VisitedAreasData { get; set; }
 
-        public Guid CurrentArea { get; set; }
+        /// <summary>
+        /// Gets or sets the current area.
+        /// </summary>
+        public Guid CurrentArea
+        {
+            get => GetValue<Guid>("CurrentArea");
+            set => SetValue("CurrentArea", value);
+        }
 
-        [JsonProperty("m_CameraPos")]
-        public Camera Camera { get; set; }
+        private Camera camera = null;
+
+        /// <summary>
+        /// Gets the current camera position.
+        /// </summary>
+        public Camera Camera
+        {
+            get => camera ?? (camera = new Camera(GetObject("m_CameraPos")));
+        }
 
         public IList<CharacterReference> ExCompanions { get; set; }
 
-        [JsonProperty("m_CurrentFormationIndex")]
-        public int CurrentFormationIndex { get; set; }
+        /// <summary>
+        /// Gets or sets the current formation index.
+        /// </summary>
+        public int CurrentFormationIndex
+        {
+            get => GetValue<int>("m_CurrentFormationIndex");
+            set => SetValue("m_CurrentFormationIndex", value);
+        }
 
-        [JsonProperty("m_MainCharacter")]
-        public CharacterReference MainCharacter { get; set; }
+        private CharacterReference mainCharacter = null;
+
+        /// <summary>
+        /// Gets the player's main character.
+        /// </summary>
+        public CharacterReference MainCharacter
+        {
+            get => mainCharacter ?? (mainCharacter = new CharacterReference(GetObject("m_MainCharacter")));
+        }
 
         public UISettings UISettings { get; set; }
 
@@ -53,7 +98,11 @@ namespace KingKeeper.Objects
 
         public Difficulty Difficulty { get; set; }
 
-        public int Chapter { get; set; }
+        public int Chapter
+        {
+            get => GetValue<int>("Chapter");
+            set => SetValue("Chapter", value);
+        }
 
         public Kingdom Kingdom { get; set; }
 
@@ -77,12 +126,26 @@ namespace KingKeeper.Objects
 
         public IList<CharacterReference> RemoteCompanions { get; set; }
 
-        public int Money { get; set; }
+        /// <summary>
+        /// Gets or sets the player's gold.
+        /// </summary>
+        public int Money
+        {
+            get => GetValue<int>("Money");
+            set => SetValue("Money", value);
+        }
 
         public Guid SelectedFormation { get; set; }
 
         public CharacterReference Stalker { get; set; } // TODO: verify
 
-        public Encumbrance Encumbrance { get; set; }
+        /// <summary>
+        /// Gets or sets the player's encumbrance level.
+        /// </summary>
+        public Encumbrance Encumbrance
+        {
+            get => GetValue<Encumbrance>("Encumbrance");
+            set => SetValue("Encumbrance", value);
+        }
     }
 }
