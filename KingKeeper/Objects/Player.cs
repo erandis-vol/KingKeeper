@@ -112,7 +112,15 @@ namespace KingKeeper.Objects
 
         public SharedVendorTables SharedVendorTables { get; set; }
 
-        public AchievmentsData Achievments { get; set; }
+        private AchievementsData achievements = null;
+
+        /// <summary>
+        /// The player's achievement progress.
+        /// </summary>
+        public AchievementsData Achievements
+        {
+            get => achievements ?? (achievements = new AchievementsData(GetObject("Achievements")));
+        }
 
         public InspectUnitsManager InspectUnitsManager { get; set; }
 
