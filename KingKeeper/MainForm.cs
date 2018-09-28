@@ -62,12 +62,11 @@ namespace KingKeeper
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // just testing things
-            var test1 = new JValue(12);
-            Console.WriteLine(test1);
-
-            var test2 = JToken.FromObject(23);
-            Console.WriteLine(test2);
+            using (var dialog = new OpenDialog { Text = "Open Saved Game..." })
+            {
+                if (dialog.ShowDialog() != DialogResult.OK)
+                    return;
+            }
         }
 
         private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -82,7 +81,12 @@ namespace KingKeeper
                     var header = new Header(Extract(archive, "header.json"));
                     var player = new Player(Extract(archive, "player.json"));
 
-                    richTextBox1.Text = player.ToString();
+                    richTextBox1.Text = header.ToString();
+
+                    var image = ExtractImage(archive, "header.png");
+                    pictureBox1.Image = image;
+
+                    Console.WriteLine(image.Size);
                 }
             }
         }
@@ -96,6 +100,14 @@ namespace KingKeeper
             return entry.ExtractToString();
         }
 
+        Image ExtractImage(ZipArchive archive, string entryName)
+        {
+            var entry = archive.GetEntry(entryName);
+            if (entry == null)
+                return null;
 
+            using (var stream = new MemoryStream(entry.Extract()))
+                return new Bitmap(stream);
+        }
     }
 }

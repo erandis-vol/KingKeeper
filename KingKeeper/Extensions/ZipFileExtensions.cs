@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Text;
@@ -54,6 +55,17 @@ namespace KingKeeper.Extensions
                 encoding = Encoding.UTF8;
 
             return encoding.GetString(Extract(source));
+        }
+
+        /// <summary>
+        /// Extracts an entry in the zip archive to an image.
+        /// </summary>
+        /// <param name="source">The zip archive entry to extract an image from.</param>
+        /// <returns></returns>
+        public static Image ExtractToImage(this ZipArchiveEntry source)
+        {
+            using (var stream = new MemoryStream(Extract(source)))
+                return new Bitmap(stream);
         }
 
         /// <summary>
