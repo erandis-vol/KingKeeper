@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace KingKeeper.Objects
 {
@@ -42,8 +44,24 @@ namespace KingKeeper.Objects
         /// <returns></returns>
         protected JArray GetArray(string propertyName)
         {
-            return (JArray)obj[propertyName];
+            var token = obj[propertyName];
+
+            if (token.Type == JTokenType.Null)
+                return new JArray();
+
+            return (JArray)token;
         }
+
+        /// <summary>
+        /// Returns the specified property as an array.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="propertyName">The name of the property.</param>
+        /// <returns></returns>
+        //protected IList<T> GetArray<T>(string propertyName)
+        //{
+        //    return GetArray(propertyName).Select(x => x.Value<JValue>().ToObject<T>()).ToList();
+        //}
 
         /// <summary>
         /// Returns the specified property as a value.

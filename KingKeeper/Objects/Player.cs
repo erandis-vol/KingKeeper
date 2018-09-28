@@ -36,8 +36,15 @@ namespace KingKeeper.Objects
         [JsonProperty("m_UnlockableFlags")]
         public UnlockableFlags UnlockableFlags { get; set; }
 
-        [JsonProperty("m_Dialog")]
-        public Dialog Dialog { get; set; }
+        private Dialog dialog = null;
+
+        /// <summary>
+        /// Gets the dialog progress.
+        /// </summary>
+        public Dialog Dialog
+        {
+            get => dialog ?? (dialog = new Dialog(GetObject("m_Dialog")));
+        }
 
         [JsonProperty("m_GlobalMap")]
         public GlobalMap GlobalMap { get; set; }

@@ -82,10 +82,7 @@ namespace KingKeeper
                     var header = new Header(Extract(archive, "header.json"));
                     var player = new Player(Extract(archive, "player.json"));
 
-                    Console.WriteLine(player.MainCharacter);
-                    player.MainCharacter.UniqueID = Guid.NewGuid();
-
-                    
+                    richTextBox1.Text = player.ToString();
                 }
             }
         }
