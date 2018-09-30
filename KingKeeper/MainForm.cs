@@ -85,7 +85,11 @@ namespace KingKeeper
                     txtHeaderGameName.Text = header.GameName;
                     txtHeaderDescription.Text = header.Description;
 
+                    txtPlayerMoney.Text = player.Money.ToString();
+
                     saveGame = dialog.SelectedSaveGame;
+
+                    Text = $"KingKeeper - {header.Name} [{saveGame.Name}]";
                 }
                 catch (Exception ex)
                 {
@@ -103,6 +107,20 @@ namespace KingKeeper
         {
             if (saveGame == null)
                 return;
+
+            try
+            {
+                Save(saveGame);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Failed to save {saveGame.Name}:\n\n{ex}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -157,6 +175,14 @@ namespace KingKeeper
             using (var archive = ZipFile.Open(file.FullName, ZipArchiveMode.Update))
             {
                 archive.ReplaceEntryFromString(player.ToString(Formatting.None), "player.json");
+            }
+        }
+
+        private void txtPlayerMoney_TextChanged(object sender, EventArgs e)
+        {
+            if (saveGame != null && int.TryParse(txtPlayerMoney.Text, out var money))
+            {
+                player.Money = money;
             }
         }
     }
