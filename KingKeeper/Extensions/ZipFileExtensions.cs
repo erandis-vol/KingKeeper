@@ -88,6 +88,18 @@ namespace KingKeeper.Extensions
         }
 
         /// <summary>
+        /// Replaces an entry by compressing a string and adding it to the zip archive.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="str"></param>
+        /// <param name="entryName"></param>
+        /// <returns></returns>
+        public static ZipArchiveEntry ReplaceEntryFromString(this ZipArchive source, string str, string entryName)
+        {
+            return ReplaceEntryFromString(source, str, null, entryName);
+        }
+
+        /// <summary>
         /// Replaces an entry by compression an array of bytes and adding it to the zip archive.
         /// </summary>
         /// <param name="source"></param>

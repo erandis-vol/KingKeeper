@@ -18,7 +18,11 @@ namespace KingKeeper
 {
     public partial class MainForm : Form
     {
-        private FileInfo[] saves = null;
+        private FileInfo saveGame = null;
+
+        private Header header = null;
+        private Player player = null;
+        private Party party = null;
 
         public MainForm()
         {
@@ -27,12 +31,20 @@ namespace KingKeeper
 
         protected override void OnLoad(EventArgs e)
         {
-            if (FindSaveGames())
+            if (!FindInstallation())
             {
-                listBox1.Items.Clear();
-                listBox1.Items.AddRange(saves.Select(x => x.Name).ToArray());
+                MessageBox.Show(
+                    "Could not find Pathfinder: Kingmaker." + Environment.NewLine + "If this is a bug, please report it.",
+                    "KingKeeper",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+
+                Close();
+                return;
             }
-            else
+
+            if (!FindSaveGames())
             {
                 MessageBox.Show(
                     "Could not find any saved games." + Environment.NewLine + "If this is a bug, please report it.",
@@ -48,16 +60,14 @@ namespace KingKeeper
             base.OnLoad(e);
         }
 
+        private bool FindInstallation()
+        {
+            return Directory.Exists(Program.GetInstallationDirectory());
+        }
+
         private bool FindSaveGames()
         {
-            var files = Directory.EnumerateFiles(Program.GetSavedGamesDirectory(), "*.zks");
-            if (files.Any())
-            {
-                saves = files.Select(x => new FileInfo(x)).ToArray();
-                return true;
-            }
-
-            return false;
+            return Directory.Exists(Program.GetSavedGamesDirectory());
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -66,48 +76,88 @@ namespace KingKeeper
             {
                 if (dialog.ShowDialog() != DialogResult.OK)
                     return;
-            }
-        }
 
-        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (listBox1.SelectedIndex >= 0 && listBox1.SelectedIndex < listBox1.Items.Count)
-            {
-                var save = saves[listBox1.SelectedIndex];              
-
-                // Save Games are ZIP archives containing JSON data
-                using (var archive = ZipFile.OpenRead(save.FullName))
+                try
                 {
-                    var header = new Header(Extract(archive, "header.json"));
-                    var player = new Player(Extract(archive, "player.json"));
+                    Open(dialog.SelectedSaveGame);
 
-                    richTextBox1.Text = header.ToString();
+                    txtHeaderName.Text = header.Name;
+                    txtHeaderGameName.Text = header.GameName;
+                    txtHeaderDescription.Text = header.Description;
 
-                    var image = ExtractImage(archive, "header.png");
-                    pictureBox1.Image = image;
-
-                    Console.WriteLine(image.Size);
+                    saveGame = dialog.SelectedSaveGame;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        $"Failed to load {dialog.SelectedSaveGame.Name}:\n\n{ex}",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
                 }
             }
         }
 
-        string Extract(ZipArchive archive, string entryName)
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var entry = archive.GetEntry(entryName);
-            if (entry == null)
-                return null;
-
-            return entry.ExtractToString();
+            if (saveGame == null)
+                return;
         }
 
-        Image ExtractImage(ZipArchive archive, string entryName)
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var entry = archive.GetEntry(entryName);
-            if (entry == null)
-                return null;
+            if (saveGame == null)
+                return;
+        }
 
-            using (var stream = new MemoryStream(entry.Extract()))
-                return new Bitmap(stream);
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO: Prompt user to save any changes.
+            Close();
+        }
+
+        private void Backup(FileInfo file)
+        {
+            var backup = new FileInfo(file.FullName + ".bak");
+
+            if (backup.Exists)
+            {
+                backup.Delete();
+            }
+
+            file.CopyTo(backup.FullName);
+        }
+
+        private void Open(FileInfo file)
+        {
+            // Create a backup of the file
+            Backup(file);
+
+            // Save games are ZIP archives
+            using (var archive = ZipFile.OpenRead(file.FullName))
+            {
+                string Extract(string entryName)
+                {
+                    var entry = archive.GetEntry(entryName);
+                    if (entry == null)
+                        throw new Exception($"Save does not contain \"{entryName}\".");
+
+                    return entry.ExtractToString();
+                }
+
+                header = new Header(Extract("header.json"));
+                player = new Player(Extract("player.json"));
+                party = new Party(Extract("party.json"));
+            }
+        }
+
+        private void Save(FileInfo file)
+        {
+            using (var archive = ZipFile.Open(file.FullName, ZipArchiveMode.Update))
+            {
+                archive.ReplaceEntryFromString(player.ToString(Formatting.None), "player.json");
+            }
         }
     }
 }
