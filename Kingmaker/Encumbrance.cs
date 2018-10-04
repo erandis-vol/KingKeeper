@@ -1,12 +1,11 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace KingKeeper.Objects
+namespace Kingmaker
 {
     [JsonConverter(typeof(StringEnumConverter))]
     public enum Encumbrance
     {
-        // TODO
-        Light, Medium,
+        Light, Medium, Heavy, Overload
     }
 }

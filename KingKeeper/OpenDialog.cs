@@ -1,5 +1,5 @@
 ﻿using KingKeeper.Extensions;
-using KingKeeper.Objects;
+using Kingmaker;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,7 +26,7 @@ namespace KingKeeper
                 {
                     Image = archive.GetEntry("header.png").ExtractToImage();
 
-                    var header = new Header(archive.GetEntry("header.json").ExtractToString());
+                    var header = archive.GetEntry("header.json").ExtractToObject<Save>();
                     Name = header.Name;
                     Description = header.Description;
                 }

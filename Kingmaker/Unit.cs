@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KingKeeper.Objects
+namespace Kingmaker
 {
-    public class UISettings
+    public class Unit
     {
         // TODO
     }
