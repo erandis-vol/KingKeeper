@@ -16,8 +16,8 @@ namespace Kingmaker
         [JsonProperty("m_QuestBook")]
         public QuestBook QuestBook { get; set; }
 
-        //[JsonProperty("m_UnlockableFlags")]
-        //public UnlockableFlags UnlockableFlags { get; set; }
+        [JsonProperty("m_UnlockableFlags")]
+        public UnlockableFlags UnlockableFlags { get; set; }
 
         [JsonProperty("m_Dialog")]
         public Dialog Dialog { get; set; }
