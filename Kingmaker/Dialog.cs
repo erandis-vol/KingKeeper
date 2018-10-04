@@ -9,6 +9,7 @@ namespace Kingmaker
     /// <summary>
     /// Represents the dialog state.
     /// </summary>
+    [JsonObject(IsReference = true)]
     public class Dialog
     {
         public IList<Guid> SelectedAnswers { get; set; }

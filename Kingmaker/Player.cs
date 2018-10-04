@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace Kingmaker
 {
+    [JsonObject(IsReference = true)]
     public class Player
     {
         public TimeSpan GameTime { get; set; }
@@ -12,8 +13,8 @@ namespace Kingmaker
 
         //public CrossSceneState CrossSceneState { get; set; }
 
-        //[JsonProperty("m_QuestBook")]
-        //public QuestBook QuestBook { get; set; }
+        [JsonProperty("m_QuestBook")]
+        public QuestBook QuestBook { get; set; }
 
         //[JsonProperty("m_UnlockableFlags")]
         //public UnlockableFlags UnlockableFlags { get; set; }
