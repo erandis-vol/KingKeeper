@@ -1,5 +1,6 @@
-﻿using KingKeeper.Extensions;
-using KingKeeper.Objects;
+﻿using KingKeeper.Controls;
+using KingKeeper.Extensions;
+using Kingmaker;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -20,9 +21,8 @@ namespace KingKeeper
     {
         private FileInfo saveGame = null;
 
-        private Header header = null;
+        private Save header = null;
         private Player player = null;
-        private Party party = null;
 
         public MainForm()
         {
@@ -84,8 +84,24 @@ namespace KingKeeper
                     txtHeaderName.Text = header.Name;
                     txtHeaderGameName.Text = header.GameName;
                     txtHeaderDescription.Text = header.Description;
-
+                    
                     txtPlayerMoney.Text = player.Money.ToString();
+
+                    //tabControlUnits.TabPages.Clear();
+                    //foreach (var unit in party.EntityData.Where(x => !x.IsReference))
+                    //{
+                    //    var name = unit.Descriptor.CustomName;
+                    //    if (name == string.Empty)
+                    //        name = "???"; // TODO
+
+                    //    var page = new TabPage(name);
+                    //    page.Controls.Add(new UnitControl(unit));
+
+                    //    tabControlUnits.TabPages.Add(page);
+                    //}
+
+                    //tabControlUnits.TabPages.Add(new TabPage("Test"));
+                    
 
                     saveGame = dialog.SelectedSaveGame;
 
@@ -155,27 +171,32 @@ namespace KingKeeper
             // Save games are ZIP archives
             using (var archive = ZipFile.OpenRead(file.FullName))
             {
-                string Extract(string entryName)
+                T Extract<T>(string entryName)
                 {
                     var entry = archive.GetEntry(entryName);
                     if (entry == null)
                         throw new Exception($"Save does not contain \"{entryName}\".");
 
-                    return entry.ExtractToString();
+                    return entry.ExtractToObject<T>();
                 }
 
-                header = new Header(Extract("header.json"));
-                player = new Player(Extract("player.json"));
-                party = new Party(Extract("party.json"));
+                //header = new Header(Extract("header.json"));
+                //player = new Player(Extract("player.json"));
+                //party = new Party(Extract("party.json"));
+
+                header = Extract<Save>("header.json");
+                player = Extract<Player>("player.json");
             }
         }
 
         private void Save(FileInfo file)
         {
-            using (var archive = ZipFile.Open(file.FullName, ZipArchiveMode.Update))
-            {
-                archive.ReplaceEntryFromString(player.ToString(Formatting.None), "player.json");
-            }
+            //using (var archive = ZipFile.Open(file.FullName, ZipArchiveMode.Update))
+            //{
+            //    archive.ReplaceEntryFromString(player.ToString(Formatting.None), "player.json");
+            //}
+
+            throw new NotImplementedException();
         }
 
         private void txtPlayerMoney_TextChanged(object sender, EventArgs e)

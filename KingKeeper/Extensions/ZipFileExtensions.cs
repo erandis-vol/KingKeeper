@@ -69,6 +69,17 @@ namespace KingKeeper.Extensions
         }
 
         /// <summary>
+        /// Extracts an entry in the zip archive to an object.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source">The zip archive entry to extract an object from.</param>
+        /// <returns>The object as deserialized from the entry.</returns>
+        public static T ExtractToObject<T>(this ZipArchiveEntry source)
+        {
+            return JsonConvert.DeserializeObject<T>(ExtractToString(source), new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+        }
+
+        /// <summary>
         /// Replaces an entry by compressing a string and adding it to the zip archive.
         /// </summary>
         /// <param name="source"></param>
