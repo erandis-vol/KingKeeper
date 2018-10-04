@@ -22,11 +22,11 @@ namespace Kingmaker
         [JsonProperty("m_Dialog")]
         public Dialog Dialog { get; set; }
 
-        //[JsonProperty("m_GlobalMap")]
-        //public GlobalMap GlobalMap { get; set; }
+        [JsonProperty("m_GlobalMap")]
+        public GlobalMap GlobalMap { get; set; }
 
-        //[JsonProperty("m_Camping")]
-        //public Camping Camping { get; set; }
+        [JsonProperty("m_Camping")]
+        public Camping Camping { get; set; }
 
         //public CompanionStories CompanionStories { get; set; }
 
@@ -35,7 +35,7 @@ namespace Kingmaker
 
         //public IList<VisitedArea> VisitedAreasData { get; set; }
 
-        public Guid CurrentArea { get; set; }
+        public string CurrentArea { get; set; }
 
         // [JsonProperty("m_CameraPos")]
         // public Vector3 Camera { get; set; }
@@ -78,7 +78,7 @@ namespace Kingmaker
 
         public long Money { get; set; }
 
-        public Guid SelectedFormation { get; set; }
+        public string SelectedFormation { get; set; }
 
         public UnitReference Stalker { get; set; } // Needs verification
 

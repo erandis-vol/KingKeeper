@@ -10,6 +10,6 @@ namespace Kingmaker
     public class UnitReference
     {
         [JsonProperty("m_UniqueId")]
-        public Guid UniqueID { get; set; } // string?
+        public string UniqueID { get; set; } // string?
     }
 }

@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace Kingmaker
 {
+    /// <summary>
+    /// Represents the quest book state.
+    /// </summary>
     [JsonObject(IsReference = true)]
     public class QuestBook
     {
@@ -28,7 +31,7 @@ namespace Kingmaker
         [JsonProperty("m_IsInUiSelected")]
         public bool IsInUISelected { get; set; }
 
-        public Guid Blueprint { get; set; }
+        public string Blueprint { get; set; }
 
         public bool Initialized { get; set; }
 
@@ -49,7 +52,7 @@ namespace Kingmaker
     public class QuestSourceCutscene
     {
         [JsonProperty("EntityId")]
-        public Guid EntityID { get; set; }
+        public string EntityID { get; set; }
 
         public string Name { get; set; }
 

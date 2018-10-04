@@ -10,6 +10,6 @@ namespace Kingmaker
     {
         [JsonProperty("m_UnlockedFlags")]
         [JsonConverter(typeof(DictionaryConverter))]
-        public IDictionary<Guid, int> UnlockedFlags { get; set; }
+        public IDictionary<string, int> UnlockedFlags { get; set; }
     }
 }

@@ -44,15 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Camping.cs" />
     <Compile Include="Converters\DictionaryConverter.cs" />
     <Compile Include="Dialog.cs" />
     <Compile Include="Encumbrance.cs" />
+    <Compile Include="GlobalMap.cs" />
     <Compile Include="QuestBook.cs" />
     <Compile Include="Save.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="UnitReference.cs" />
+    <Compile Include="UnlockableFlags.cs" />
+    <Compile Include="Vector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
