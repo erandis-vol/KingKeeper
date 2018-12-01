@@ -1,5 +1,5 @@
 ﻿using KingKeeper.Extensions;
-using Kingmaker;
+using KingKeeperCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

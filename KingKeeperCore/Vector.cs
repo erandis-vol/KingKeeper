@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Kingmaker
+namespace KingKeeperCore
 {
     public struct Vector2
     {

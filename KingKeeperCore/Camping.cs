@@ -1,8 +1,8 @@
-﻿using Kingmaker.Converters;
+﻿using KingKeeperCore.Converters;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Kingmaker
+namespace KingKeeperCore
 {
     /// <summary>
     /// Represents the camping state.

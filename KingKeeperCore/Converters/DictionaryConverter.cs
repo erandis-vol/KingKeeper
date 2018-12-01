@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Kingmaker.Converters
+namespace KingKeeperCore.Converters
 {
     // DictionaryJsonConverter by Peter Morlion
     // https://gist.github.com/petermorlion/c92e3af4ecf256d4b66c

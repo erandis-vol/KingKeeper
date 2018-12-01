@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Kingmaker
+namespace KingKeeperCore
 {
     [JsonConverter(typeof(StringEnumConverter))]
     public enum Encumbrance

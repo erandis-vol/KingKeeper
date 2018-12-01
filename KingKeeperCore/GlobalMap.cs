@@ -1,10 +1,10 @@
-﻿using Kingmaker.Converters;
+﻿using KingKeeperCore.Converters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 
-namespace Kingmaker
+namespace KingKeeperCore
 {
     /// <summary>
     /// Represents the global map state.

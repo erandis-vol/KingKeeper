@@ -3,7 +3,7 @@ using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 
-namespace Kingmaker
+namespace KingKeeperCore
 {
     /// <summary>
     /// Represents the type of a save.

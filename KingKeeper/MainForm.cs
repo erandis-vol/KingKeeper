@@ -1,6 +1,6 @@
 ﻿using KingKeeper.Controls;
 using KingKeeper.Extensions;
-using Kingmaker;
+using KingKeeperCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
