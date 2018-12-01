@@ -7,8 +7,8 @@
     <ProjectGuid>{387377A8-57AE-43DB-8B78-D66EF5AF3B00}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kingmaker</RootNamespace>
-    <AssemblyName>Kingmaker</AssemblyName>
+    <RootNamespace>KingKeeperCore</RootNamespace>
+    <AssemblyName>KingKeeperCore</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

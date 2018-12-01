@@ -106,9 +106,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Kingmaker\Kingmaker.csproj">
+    <ProjectReference Include="..\KingKeeperCore\KingKeeperCore.csproj">
       <Project>{387377a8-57ae-43db-8b78-d66ef5af3b00}</Project>
-      <Name>Kingmaker</Name>
+      <Name>KingKeeperCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

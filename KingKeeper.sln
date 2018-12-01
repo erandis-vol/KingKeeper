@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingKeeper", "KingKeeper\KingKeeper.csproj", "{B20FD089-B220-42E7-BFE2-E7CC43B9A0F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kingmaker", "Kingmaker\Kingmaker.csproj", "{387377A8-57AE-43DB-8B78-D66EF5AF3B00}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingKeeperCore", "KingKeeperCore\KingKeeperCore.csproj", "{387377A8-57AE-43DB-8B78-D66EF5AF3B00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
