@@ -1,9 +1,9 @@
-﻿using KingKeeperCore.Converters;
+﻿using KingKeeper.Core.Converters;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace KingKeeperCore
+namespace KingKeeper.Core
 {
     [JsonObject(IsReference = true)]
     public class UnlockableFlags

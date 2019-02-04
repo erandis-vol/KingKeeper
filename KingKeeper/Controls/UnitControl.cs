@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using KingKeeper.Core;
+using System;
 using System.Windows.Forms;
-using KingKeeperCore;
 
 namespace KingKeeper.Controls
 {
@@ -80,7 +73,7 @@ namespace KingKeeper.Controls
         }
 
         /// <summary>
-        /// The <see cref="Objects.Unit"/> managed by this page.
+        /// The <see cref="KingKeeperCore.Unit"/> managed by this page.
         /// </summary>
         public Unit Unit { get; }
     }

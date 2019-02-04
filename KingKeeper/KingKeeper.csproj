@@ -57,6 +57,21 @@
     <Compile Include="Controls\UnitControl.Designer.cs">
       <DependentUpon>UnitControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UnitControlTabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Core\Camping.cs" />
+    <Compile Include="Core\Converters\DictionaryConverter.cs" />
+    <Compile Include="Core\Dialog.cs" />
+    <Compile Include="Core\Encumbrance.cs" />
+    <Compile Include="Core\GlobalMap.cs" />
+    <Compile Include="Core\Player.cs" />
+    <Compile Include="Core\QuestBook.cs" />
+    <Compile Include="Core\Save.cs" />
+    <Compile Include="Core\Unit.cs" />
+    <Compile Include="Core\UnitReference.cs" />
+    <Compile Include="Core\UnlockableFlags.cs" />
+    <Compile Include="Core\Vector.cs" />
     <Compile Include="Extensions\JObjectExtensions.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -104,12 +119,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\KingKeeperCore\KingKeeperCore.csproj">
-      <Project>{387377a8-57ae-43db-8b78-d66ef5af3b00}</Project>
-      <Name>KingKeeperCore</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,18 +1,9 @@
 ﻿using KingKeeper.Controls;
+using KingKeeper.Core;
 using KingKeeper.Extensions;
-using KingKeeperCore;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KingKeeper

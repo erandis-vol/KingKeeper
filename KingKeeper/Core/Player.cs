@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace KingKeeperCore
+namespace KingKeeper.Core
 {
     [JsonObject(IsReference = true)]
     public class Player

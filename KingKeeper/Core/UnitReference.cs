@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace KingKeeperCore
+namespace KingKeeper.Core
 {
     /// <summary>
     /// Represents a reference to a unit.

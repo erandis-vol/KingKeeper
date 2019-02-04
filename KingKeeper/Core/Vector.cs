@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 
-namespace KingKeeperCore
+namespace KingKeeper.Core
 {
     public struct Vector2
     {
