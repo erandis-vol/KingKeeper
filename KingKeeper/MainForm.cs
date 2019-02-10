@@ -75,8 +75,10 @@ namespace KingKeeper
                     txtHeaderName.Text = header.Name;
                     txtHeaderGameName.Text = header.GameName;
                     txtHeaderDescription.Text = header.Description;
-                    
-                    txtPlayerMoney.Text = player.Money.ToString();
+
+                    //txtPlayerMoney.Text = player.Money.ToString();
+
+                    propertyGridPlayer.SelectedObject = player;
 
                     //tabControlUnits.TabPages.Clear();
                     //foreach (var unit in party.EntityData.Where(x => !x.IsReference))
@@ -171,10 +173,6 @@ namespace KingKeeper
                     return entry.ExtractToObject<T>();
                 }
 
-                //header = new Header(Extract("header.json"));
-                //player = new Player(Extract("player.json"));
-                //party = new Party(Extract("party.json"));
-
                 header = Extract<Save>("header.json");
                 player = Extract<Player>("player.json");
             }
@@ -192,10 +190,10 @@ namespace KingKeeper
 
         private void txtPlayerMoney_TextChanged(object sender, EventArgs e)
         {
-            if (saveGame != null && int.TryParse(txtPlayerMoney.Text, out var money))
-            {
-                player.Money = money;
-            }
+            //if (saveGame != null && int.TryParse(txtPlayerMoney.Text, out var money))
+            //{
+            //    player.Money = money;
+            //}
         }
     }
 }

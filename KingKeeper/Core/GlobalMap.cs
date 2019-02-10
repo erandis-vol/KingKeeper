@@ -1,8 +1,10 @@
 ﻿using KingKeeper.Core.Converters;
+using KingKeeper.Editors;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace KingKeeper.Core
 {
@@ -10,32 +12,35 @@ namespace KingKeeper.Core
     /// Represents the global map state.
     /// </summary>
     [JsonObject(IsReference = true)]
+    [TypeConverter(typeof(ExpandableObjectConverter))]
     public class GlobalMap
     {
         public string LastLocation { get; set; }
 
         [JsonConverter(typeof(DictionaryConverter))]
-        public IDictionary<string, GlobalMapLocation> Locations { get; set; }
+        public Dictionary<string, GlobalMapLocation> Locations { get; set; }
 
         [JsonConverter(typeof(DictionaryConverter))]
-        public IDictionary<string, GlobalMapEdge> Edges { get; set; }
+        public Dictionary<string, GlobalMapEdge> Edges { get; set; }
 
-        public IList<string> PerceptionRolledLocations { get; set; }
+        public List<string> PerceptionRolledLocations { get; set; }
 
         [JsonProperty("m_TravelData")]
         public GlobalMapTravelData TravelData { get; set; }
 
-        public IList<GlobalMapTravelData> HistoryTravels { get; set; }
+        public List<GlobalMapTravelData> HistoryTravels { get; set; }
 
         [JsonProperty("m_Encounters")]
-        public IList<GlobalMapEncounter> Encounters { get; set; }
+        public List<GlobalMapEncounter> Encounters { get; set; }
 
         [JsonProperty("m_EncountersCount")]
         [JsonConverter(typeof(DictionaryConverter))]
-        public IDictionary<string, int> EncountersCount { get; set; }
+        public Dictionary<string, int> EncountersCount { get; set; }
 
         public GlobalMapPosition PartyPosition { get; set; }
 
+        [TypeConverter(typeof(GlobalMapUVTypeConverter))]
+        //[TypeConverter(typeof(ExpandableObjectConverter))]
         public GlobalMapUV PartyPositionUV { get; set; }
 
         public float MilesTraveled { get; set; }
@@ -94,7 +99,7 @@ namespace KingKeeper.Core
 
         public GlobalMapPosition To { get; set; }
 
-        public IList<GlobalMapTravelEdge> Path { get; set; }
+        public List<GlobalMapTravelEdge> Path { get; set; }
 
         public GlobalMapTravelEdge CurrentEdge { get; set; }
 
@@ -135,7 +140,7 @@ namespace KingKeeper.Core
 
         public int CR { get; set; }
 
-        public IList<GlobalMapEncounterSpawnData> SpawnersGroups { get; set; }
+        public List<GlobalMapEncounterSpawnData> SpawnersGroups { get; set; }
 
         public bool UserEnter { get; set; }
     }
@@ -168,6 +173,8 @@ namespace KingKeeper.Core
         public float EdgePosition { get; set; }
     }
 
+    //[TypeConverter(typeof(GlobalMapUVTypeConverter))]
+    // The attribute causes an error.
     public struct GlobalMapUV // : Vector2
     {
         [JsonProperty("x")]

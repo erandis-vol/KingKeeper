@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace KingKeeper.Core
 {
@@ -10,6 +11,11 @@ namespace KingKeeper.Core
     {
         [JsonProperty("m_UnlockedFlags")]
         [JsonConverter(typeof(DictionaryConverter))]
-        public IDictionary<string, int> UnlockedFlags { get; set; }
+        public Dictionary<string, int> UnlockedFlags { get; set; }
+
+        public override string ToString()
+        {
+            return "(Collection)";
+        }
     }
 }

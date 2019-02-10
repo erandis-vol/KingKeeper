@@ -84,9 +84,10 @@ namespace KingKeeper
 
         protected override void OnClosed(EventArgs e)
         {
-            foreach (var save in saveGames)
+            for (int i = 0; i < saveGames.Count; i++)
             {
-                save.Dispose();
+                saveGames[i]?.Dispose();
+                saveGames[i] = null;
             }
 
             base.OnClosed(e);
@@ -94,20 +95,20 @@ namespace KingKeeper
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listView1.SelectedItems.Count > 0)
-            {
-                var selectedItem = listView1.SelectedItems[0];
-                var selectedGame = selectedItem.Tag as SaveGame;
+            var selectedItem = listView1.FirstSelectedItem();
+            var selectedGame = selectedItem?.Tag as SaveGame;
 
+            if (selectedItem != null && selectedGame != null)
+            {
                 pictureBox1.Image = selectedGame.Image;
                 richTextBox1.Text = selectedGame.Description;
 
                 selected = selectedGame;
-
                 button1.Enabled = true;
             }
             else
             {
+                selected = null;
                 button1.Enabled = false;
             }
         }

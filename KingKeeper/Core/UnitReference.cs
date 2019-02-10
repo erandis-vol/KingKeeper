@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using KingKeeper.Editors;
+using Newtonsoft.Json;
 using System;
+using System.ComponentModel;
 
 namespace KingKeeper.Core
 {
@@ -7,6 +9,7 @@ namespace KingKeeper.Core
     /// Represents a reference to a unit.
     /// </summary>
     [JsonObject(IsReference = true)]
+    [TypeConverter(typeof(UnitReferenceTypeConverter))]
     public class UnitReference
     {
         [JsonProperty("m_UniqueId")]

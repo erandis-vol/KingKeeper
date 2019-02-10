@@ -36,7 +36,7 @@ namespace KingKeeper.Core
 
         public string AreaNameOverride { get; set; }
 
-        public IList<SavePortrait> PartyPortraits { get; set; }
+        public List<SavePortrait> PartyPortraits { get; set; }
 
         public DateTime SystemSaveTime { get; set; }
 
@@ -44,7 +44,7 @@ namespace KingKeeper.Core
 
         public TimeSpan GameTotalTime { get; set; }
 
-        public IList<int> Versions { get; set; }
+        public List<int> Versions { get; set; }
 
         public int ComatibilityVersion { get; set; }
     }

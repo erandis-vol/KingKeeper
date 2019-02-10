@@ -1,6 +1,7 @@
 ﻿using KingKeeper.Core.Converters;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace KingKeeper.Core
 {
@@ -8,12 +9,13 @@ namespace KingKeeper.Core
     /// Represents the camping state.
     /// </summary>
     [JsonObject(IsReference = true)]
+    [TypeConverter(typeof(ExpandableObjectConverter))]
     public class Camping
     {
-        public IList<string> ExtraEncounters { get; set; }
+        public List<string> ExtraEncounters { get; set; }
 
         [JsonConverter(typeof(DictionaryConverter))]
-        public IDictionary<string, int> PlayedBanters { get; set; }
+        public Dictionary<string, int> PlayedBanters { get; set; }
 
         public bool UseSpells { get; set; }
 
@@ -21,18 +23,18 @@ namespace KingKeeper.Core
 
         public bool NeedsInitialDistribution { get; set; }
 
-        public IList<UnitReference> Hunters { get; set; }
+        public List<UnitReference> Hunters { get; set; }
 
-        public IList<UnitReference> Cookers { get; set; }
+        public List<UnitReference> Cookers { get; set; }
 
         public string CookingRecipe { get; set; }
 
-        public IList<UnitReference> Builders { get; set; }
+        public List<UnitReference> Builders { get; set; }
 
-        public IList<UnitReference> Special { get; set; }
+        public List<UnitReference> Special { get; set; }
 
-        public IList<IList<UnitReference>> Guards { get; set; }
+        public List<IList<UnitReference>> Guards { get; set; }
 
-        public IList<string> KnownRecipes { get; set; }
+        public List<string> KnownRecipes { get; set; }
     }
 }

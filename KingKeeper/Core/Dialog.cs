@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace KingKeeper.Core
 {
@@ -10,20 +11,26 @@ namespace KingKeeper.Core
     /// Represents the dialog state.
     /// </summary>
     [JsonObject(IsReference = true)]
+    [TypeConverter(typeof(ExpandableObjectConverter))]
     public class Dialog
     {
-        public IList<string> SelectedAnswers { get; set; }
+        public List<string> SelectedAnswers { get; set; }
 
         [JsonConverter(typeof(DictionaryConverter))]
-        public IDictionary<string, SkillCheckResult> AnswerChecks { get; set; }
+        public Dictionary<string, SkillCheckResult> AnswerChecks { get; set; }
 
-        public IList<string> ShownAnswerLists { get; set; }
+        public List<string> ShownAnswerLists { get; set; }
 
-        public IList<string> ShownCues { get; set; }
+        public List<string> ShownCues { get; set; }
 
-        public IList<string> ShownDialogs { get; set; }
+        public List<string> ShownDialogs { get; set; }
 
         public ScheduledDialog Scheduled { get; set; }
+
+        public override string ToString()
+        {
+            return "(...)";
+        }
     }
 
     /// <summary>
